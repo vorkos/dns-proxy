@@ -1,7 +1,6 @@
 name: Run unit tests with Python
 
 on: 
-  push:
   pull_request:
   
 env:
