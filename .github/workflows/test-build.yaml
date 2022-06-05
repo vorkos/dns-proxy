@@ -36,6 +36,9 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
     - name: Checking out code from the repository
       uses: actions/checkout@v3
