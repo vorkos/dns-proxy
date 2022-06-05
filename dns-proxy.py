@@ -22,7 +22,8 @@ def send_tls_request(data, hostname: str, port: int = 853) -> bytes:
     with socket.create_connection((hostname, port), timeout=2) as sock:
         with context.wrap_socket(sock, server_hostname=hostname) as tls_sock:
             logger.info(
-                f"Certificate obtained from the DNS server: {str(tls_sock.getpeercert())}")
+                f"Certificate obtained \
+                    from the DNS server: {str(tls_sock.getpeercert())}")
             sent = tls_sock.send(data)
             if sent == 0:
                 logger.error(f"Connection to {hostname} broken")
