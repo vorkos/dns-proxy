@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.9, 3.10]
+        python-version: [3.9, 3.8]
     steps:
     - name: Checking out code from the repository
       uses: actions/checkout@v3
@@ -33,10 +33,13 @@ jobs:
       run: |
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-        
+
   build:
     runs-on: ubuntu-latest
     steps:
+    - name: Checking out code from the repository
+      uses: actions/checkout@v3
+
     - name: Log in to the Container registry
       uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
       with:
